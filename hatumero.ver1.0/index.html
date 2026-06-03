@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>発メロスイッチ</title>
+<style>
+body{
+  background:#020617;
+  color:white;
+  text-align:center;
+  font-family:system-ui;
+  margin-top:40px;
+}
+img{
+  width:180px;
+  margin:15px auto;
+  display:block;
+  cursor:pointer;
+}
+input{
+  margin-bottom:20px;
+}
+</style>
+</head>
+<body>
+
+<h1>発車メロディスイッチ</h1>
+
+<input type="file" id="file" accept="audio/*">
+
+<!-- 再生 -->
+<img id="playImg" src="play.png">
+
+<!-- 停止 -->
+<img id="stopImg" src="stop.png">
+
+<audio id="audio" loop></audio>
+
+<script>
+const file = document.getElementById("file");
+const audio = document.getElementById("audio");
+const playImg = document.getElementById("playImg");
+const stopImg = document.getElementById("stopImg");
+
+// ユーザーが音を選ぶ
+file.onchange = () => {
+  const f = file.files[0];
+  if(!f) return;
+  audio.src = URL.createObjectURL(f);
+};
+
+// 再生（ループ）
+playImg.onclick = () => {
+  if(audio.src) audio.play();
+};
+
+// 停止＋リセット
+stopImg.onclick = () => {
+  audio.pause();
+  audio.currentTime = 0;
+};
+</script>
+
+</body>
+</html>
