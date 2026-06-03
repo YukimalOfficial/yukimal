@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>発車メロディスイッチ</title>
+
+<style>
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow:hidden;        /* ← スクロール禁止 */
+  touch-action:none;      /* ← スワイプ無効 */
+}
+
+body{
+  background:white;
+  color:black;
+  text-align:center;
+  font-family:system-ui;
+  padding-top:40px;
+}
+
+h1{
+  margin-bottom:20px;
+}
+
+input{
+  margin-bottom:30px;
+  font-size:16px;
+}
+
+/* 共通ボタン */
+.btn{
+  width:160px;
+  height:160px;
+  font-size:40px;
+  font-weight:bold;
+  border:none;
+  border-radius:36px;
+  color:white;
+  cursor:pointer;
+  margin:18px auto;
+  display:block;
+}
+
+/* ON = 黒 */
+#onBtn{ background:black; }
+
+/* OFF = 赤 */
+#offBtn{ background:#dc2626; }
+</style>
+</head>
+
+<body>
+
+<h1>発車メロディスイッチ</h1>
+
+<input type="file" id="file" accept="audio/*">
+
+<button id="onBtn" class="btn">ON</button>
+<button id="offBtn" class="btn">OFF</button>
+
+<audio id="audio" loop></audio>
+
+<script>
+const file = document.getElementById("file");
+const audio = document.getElementById("audio");
+const onBtn = document.getElementById("onBtn");
+const offBtn = document.getElementById("offBtn");
+
+// 画面スライド完全防止
+document.addEventListener("touchmove", e => e.preventDefault(), {passive:false});
+
+// 音を選ぶ
+file.onchange = () => {
+  const f = file.files[0];
+  if(!f) return;
+  audio.src = URL.createObjectURL(f);
+};
+
+// ON（再生）
+onBtn.onclick = () => {
+  if(!audio.src) return;
+  audio.currentTime = 0;
+  audio.play();
+};
+
+// OFF（停止）
+offBtn.onclick = () => {
+  audio.pause();
+  audio.currentTime = 0;
+};
+</script>
+
+</body>
+</html>
