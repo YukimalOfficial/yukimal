@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>個人用公式ファンサイト</title>
     <style>
         /* 全体のサイバー感・ダーク感の設定 */
         body {
@@ -20,11 +20,42 @@
         /* アニメ風のメインビジュアル（ヘッダー） */
         header {
             text-align: center;
-            padding: 8rem 1rem;
+            padding: 5rem 1rem 6rem; /* アイコン追加に伴い上の余白を調整 */
             position: relative;
             border-bottom: 4px solid #00f0ff;
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
             background: linear-gradient(135deg, #0d001a 0%, #000511 100%);
+        }
+
+        /* 【新機能】アニメ公式風の円形アイコン枠 */
+        .header-icon {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            border: 3px solid #00f0ff;
+            box-shadow: 0 0 15px #00f0ff, inset 0 0 10px rgba(0, 240, 255, 0.5);
+            background-color: #10101c;
+            overflow: hidden; /* 枠からはみ出た画像を丸く切り取る */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* アイコン画像そのものの設定 */
+        .header-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 縦横比を維持して枠いっぱいに表示 */
+        }
+
+        /* 画像がない場合のダミーテキスト用（消してもOK） */
+        .header-icon span {
+            color: #00f0ff;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         /* ネオンに光るタイトル */
@@ -76,7 +107,7 @@
             text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
         }
 
-        /* 【新機能】NEWSタブ（スクロール付きタイムライン） */
+        /* NEWSタブ（スクロール付きタイムライン） */
         .news-container {
             max-height: 250px;
             overflow-y: auto;
@@ -115,7 +146,7 @@
             min-width: 110px;
         }
 
-        /* ニュースのラベル（INFO、MEDIAなど） */
+        /* ニュースのラベル */
         .news-badge {
             background: #00f0ff;
             color: #0a0a12;
@@ -175,39 +206,37 @@
 
     <!-- メインビジュアル -->
     <header>
+        <!-- 【新機能】アイコン画像エリア -->
+        <div class="header-icon">
+            <!-- 自分の用意した画像に差し替える場合は、下の「src="icon.png"」の部分を書き換えてください -->
+            <img src="icon.png" alt="ICON" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display: none;">NO IMAGE</span>
+        </div>
+
         <h1>PROJECT: YOUR NAME</h1>
         <p>— 運命を書き換える、個人の軌跡。 —</p>
     </header>
 
     <div class="container">
         
-        <!-- 【NEWSセクション】 -->
+        <!-- NEWSセクション -->
         <section>
             <h2>NEWS（最新情報）</h2>
             <div class="news-container">
-                <!-- ニュース項目 1 -->
                 <div class="news-item">
                     <span class="news-date">2026.06.04</span>
                     <span class="news-badge important">INFO</span>
                     <div class="news-text">個人用公式ホームページに「NEWSタブ」が電撃追加されました！</div>
                 </div>
-                <!-- ニュース項目 2 -->
                 <div class="news-item">
                     <span class="news-date">2026.05.20</span>
                     <span class="news-badge">MEDIA</span>
                     <div class="news-text">メインビジュアルおよび新機能のアップデートロードマップを公開。</div>
                 </div>
-                <!-- ニュース項目 3 -->
                 <div class="news-item">
                     <span class="news-date">2026.05.01</span>
                     <span class="news-badge">INFO</span>
                     <div class="news-text">コードネーム「あなたの名前」開発プロジェクトが始動しました。</div>
-                </div>
-                <!-- ニュース項目 4（スクロール確認用テスト） -->
-                <div class="news-item">
-                    <span class="news-date">2026.04.15</span>
-                    <span class="news-badge">SYSTEM</span>
-                    <div class="news-text">過去のログ：初期システムサーバーの構築に成功しました。</div>
                 </div>
             </div>
         </section>
@@ -215,17 +244,17 @@
         <!-- キャラクター紹介風のプロフィール -->
         <section>
             <h2>CHARACTER（自己紹介）</h2>
-            <p><strong>Yukimal</strong></p>
-            <p>年齢:非公開<bn>性別:男<br>その他の情報:プログラミング歴半年</p>
+            <p><strong>【コードネーム: あなたの名前】</strong></p>
+            <p>現代を生きるWebクリエイター。独自のガジェットとプログラミングスキルを武器に、デジタルの海で活動を続ける謎の人物。好物は美味しい珈琲。</p>
         </section>
 
         <!-- パラメータ風のスキル・趣味 -->
         <section>
-            <h2>STATUS（趣味）</h2>
+            <h2>STATUS（能力・趣味）</h2>
             <ul>
-                <li><strong>ゲーム:</strong> フォートナイト、ロブロックス、マインクラフトなどをやってる</li>
-                <li><strong>アニメ鑑賞:</strong> 最近は日常とかを見ている</li>
-                <li><strong>プログラミング:</strong> 主にC#とHTMLをやっている</li>
+                <li><strong>HTML / CSS:</strong> 階級 A (Webサイトの構築・装飾が可能)</li>
+                <li><strong>JavaScript:</strong> 階級 B (ギミックの実装が可能)</li>
+                <li><strong>特殊能力:</strong> 映画の徹夜鑑賞、どこでも即座に睡眠可能</li>
             </ul>
         </section>
     </div>
